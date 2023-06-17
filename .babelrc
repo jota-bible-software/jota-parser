@@ -1,0 +1,5 @@
+{
+  "presets": [
+    "@babel/preset-env" // without it import will not work in jest
+  ]
+}
