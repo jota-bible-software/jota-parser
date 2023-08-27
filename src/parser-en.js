@@ -17,7 +17,7 @@ const letter2 = `(2|II|second|2nd)${spaces0}${letterWord}`
 const letter3 = `(3|III|third|3rd)${spaces0}${letterWord}`
 
 const samuel = 'sa(m(u(el)?)?)?'
-const kings = '(kings?|kgs)'
+const kings = '(kings?|kgs|kng)'
 const chronicles = '(chr(o(n(ic(les?)?)?)?)?|chn)'
 const corinthians = 'cor(i(n(t(h(ians?)?)?)?)?)?'
 const timothy = '(ti(m(o(t(hy)?)?)?)?|tm)'
@@ -26,8 +26,11 @@ const peter = '(p(e(t(er)?)?)?|pt?r?)'
 const john = '(j(o(hn?)?)?|jh?n)'
 const maccabees = 'macc?(ab(ees?)?)?'
 
-export const bookMatchers = [
-  `${book0}(ge(n(e(s(is)?)?)?)?|gn)`,
+// Natural order
+const order = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73]
+
+const bookMatchers = [
+  `${book0}(ge(n(e(s(is)?)?|nees[ei]s)?)?|gn)`,
   `${book0}ex(o(d(us)?)?)?`,
   `${book0}lev(i(t(icus)?)?)?`,
   `${book0}num(b(ers?)?)?`,
@@ -55,7 +58,7 @@ export const bookMatchers = [
   `${book0}(eze(k(iel)?)?|ezk)`,
   `${book0}(da(n(iel)?)?|dn)`,
   `${book0}hos(e(a?)?)?`,
-  `${book0}joel?`,
+  `${book0}(joel?|jl)`,
   `${book0}am(os?)?`,
   `${book0}oba(d(iah)?)?`,
   `${book0}jon(ah?)?`,
@@ -103,5 +106,5 @@ export const bookMatchers = [
   `${book0}(ba(r(u(ch)?)?)?|br)`
 ]
 
-const parserRules = { locale, bookMatchers }
+const parserRules = { locale, bookMatchers, order }
 export default parserRules

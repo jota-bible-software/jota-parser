@@ -1,5 +1,23 @@
 export const data = [
   {
+    group: 'Case insensitive', cases: [
+      { input: 'Gen 1:2', expectedOutput: [[0, 1, 2]] },
+      { input: 'gen 1:2', expectedOutput: [[0, 1, 2]] },
+      { input: 'GEN 1:2', expectedOutput: [[0, 1, 2]] },
+    ]
+  },
+  {
+    group: 'No spaces', cases: [
+      { input: 'Gen1:2', expectedOutput: [[0, 1, 2]] },
+      { input: '1Kgs1:2', expectedOutput: [[10, 1, 2]] },
+      { input: 'IKgs1:2', expectedOutput: [[10, 1, 2]] },
+      { input: 'FirstKgs1:2', expectedOutput: [[10, 1, 2]] },
+      { input: '1J1:2', expectedOutput: [[61, 1, 2]] },
+      { input: 'IJ1:2', expectedOutput: [[61, 1, 2]] },
+      { input: 'FirstJ1:2', expectedOutput: [[61, 1, 2]] },
+    ]
+  },
+  {
     group: 'Chapter only', cases: [
       { input: 'Gen1', expectedOutput: [[0, 1]] },
       { input: 'Gen 1', expectedOutput: [[0, 1]] },

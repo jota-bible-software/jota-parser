@@ -1,6 +1,6 @@
 import JotaParser from './src/parser'
 
-const supportedLocales =  ['en', 'pl']
+const supportedLocales = ['en', 'pl']
 
 // Set default locale and the change handler
 let defaultLocale = navigator.languages[0].substring(0, 2)
@@ -45,7 +45,7 @@ async function displayTestCases(locale, common) {
       parser2.parse(it.input)
       const output2before = parser2.osis()
       time2 = performance.now() - time2
-      const output2 = output2before.replace(',', ', ').replace('-', ' - ')
+      const output2 = addSpaces(output2before)
       const osisOutput = output2osis(it.expectedOutput)
       const result2 = output2 == osisOutput
       if (!result2) stat2++
@@ -111,7 +111,7 @@ function setupInputElement() {
     parser2.parse(v)
     const output2 = parser2.osis()
     document.getElementById("output1").innerHTML = output1
-    document.getElementById("output2").innerHTML = output2
+    document.getElementById("output2").innerHTML = addSpaces(output2)
 
     const theSame = output1 === output2
     const element = document.getElementById('compare-output')
@@ -150,4 +150,8 @@ function output2osis(output) {
     const verseEnd = consecutive[3] ? ` - ${bookChapter}.${consecutive[3]}` : ''
     return `${bookChapter}${verseStart}${verseEnd}`
   }
+}
+
+function addSpaces(s) {
+  return s.replace(/\,/g, ', ').replace(/\-/g, ' - ')
 }

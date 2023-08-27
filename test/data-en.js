@@ -1,27 +1,26 @@
 export const data = [
   {
-    group: 'Chapter and verses', cases: [
-      { input: 'Gen 1:2', expectedOutput: [[0, 1, 2]] },
-      { input: '1J 1:2', expectedOutput: [[61, 1, 2]] },
-      { input: 'Gen 2:3a', expectedOutput: [[0, 2, 3]] },
-      { input: 'Gen 2:3-5', expectedOutput: [[0, 2, 3, 5]] },
-      { input: 'Gen 2:3,5', expectedOutput: [[0, 2, 3], [0, 2, 5]] },
-      { input: 'Gen 2,3-5', expectedOutput: [[0, 2, 3, 5]] },
-      { input: 'Gen 2,3;5', expectedOutput: [[0, 2, 3], [0, 2, 5]] },
-      { input: 'Gen 2,3.5', expectedOutput: [[0, 2, 3], [0, 2, 5]] },
-      { input: 'aa Gen 2,3 Exo 4:5 bb ', expectedOutput: [[0, 2, 3], [1, 4, 5]] },
-      { input: 'Gen 2:3-5, 7-8', expectedOutput: [[0, 2, 3, 5], [0, 2, 7, 8]] },
-      { input: 'Gen. 1;2-3', expectedOutput: [[0, 1, 2, 3]] },
-      { input: 'John 1:2, 1 John 1:2', expectedOutput: [[42, 1, 2], [61, 1, 2]] },
-      { input: '1 John 1:2, John 1:2', expectedOutput: [[61, 1, 2], [42, 1, 2]] },
-      { input: 'Eph 3.20 ', expectedOutput: [[48, 3, 20]] },
-      { input: 'Gen 2,3,4', expectedOutput: [[0, 2, 3], [0, 2, 4]] },
-      { input: 'Gen 2:3:4', expectedOutput: [[0, 2, 3], [0, 2, 4]] },
-    ]
-  },
-  {
-    group: 'Case insensitive', cases: [
-      { input: 'jos 1:2', expectedOutput: [[5, 1, 2]] },
+    group: 'Book numbers', cases: [
+      { input: '1 Kgs 1:2', expectedOutput: [[10, 1, 2]] },
+      { input: 'I Kgs 1:2', expectedOutput: [[10, 1, 2]] },
+      { input: '1st Kgs 1:2', expectedOutput: [[10, 1, 2]] },
+      { input: 'First Kgs 1:2', expectedOutput: [[10, 1, 2]] },
+      { input: '2 Kgs 1:2', expectedOutput: [[11, 1, 2]] },
+      { input: 'II Kgs 1:2', expectedOutput: [[11, 1, 2]] },
+      { input: '2nd Kgs 1:2', expectedOutput: [[11, 1, 2]] },
+      { input: 'Second Kgs 1:2', expectedOutput: [[11, 1, 2]] },
+      { input: '1 J 1:2', expectedOutput: [[61, 1, 2]] },
+      { input: 'I J 1:2', expectedOutput: [[61, 1, 2]] },
+      { input: '1st J 1:2', expectedOutput: [[61, 1, 2]] },
+      { input: 'First J 1:2', expectedOutput: [[61, 1, 2]] },
+      { input: '2 J 1:2', expectedOutput: [[62, 1, 2]] },
+      { input: 'II J 1:2', expectedOutput: [[62, 1, 2]] },
+      { input: '2nd J 1:2', expectedOutput: [[62, 1, 2]] },
+      { input: 'Second J 1:2', expectedOutput: [[62, 1, 2]] },
+      { input: '3 J 1:2', expectedOutput: [[63, 1, 2]] },
+      { input: 'III J 1:2', expectedOutput: [[63, 1, 2]] },
+      { input: '3rd J 1:2', expectedOutput: [[63, 1, 2]] },
+      { input: 'Third J 1:2', expectedOutput: [[63, 1, 2]] },
     ]
   },
   {
@@ -30,6 +29,8 @@ export const data = [
       { input: 'Gene 1:2', expectedOutput: [[0, 1, 2]] },
       { input: 'Genes 1:2', expectedOutput: [[0, 1, 2]] },
       { input: 'Genesis 1:2', expectedOutput: [[0, 1, 2]] },
+      { input: 'Genneeses 1:2', expectedOutput: [[0, 1, 2]] },
+      { input: 'Genneesis 1:2', expectedOutput: [[0, 1, 2]] },
       { input: 'Book of Genesis 1:2', expectedOutput: [[0, 1, 2]] },
     ]
   },
@@ -98,6 +99,7 @@ export const data = [
       { input: '1 Kings 1:2', expectedOutput: [[10, 1, 2]] },
       { input: '1 King 1:2', expectedOutput: [[10, 1, 2]] },
       { input: '1 Kgs 1:2', expectedOutput: [[10, 1, 2]] },
+      { input: '2 Kng 1:2', expectedOutput: [[11, 1, 2]] },
     ]
   },
   {
@@ -216,6 +218,7 @@ export const data = [
     group: 'Joel', cases: [
       { input: 'Joe 1:2', expectedOutput: [[28, 1, 2]] },
       { input: 'Joel 1:2', expectedOutput: [[28, 1, 2]] },
+      { input: 'Jl 1:2', expectedOutput: [[28, 1, 2]] },
     ]
   },
   {
@@ -333,7 +336,7 @@ export const data = [
     ]
   },
   {
-    group: 'Rzymian', cases: [
+    group: 'Romans', cases: [
       { input: 'Ro 1:2', expectedOutput: [[44, 1, 2]] },
       { input: 'Rom 1:2', expectedOutput: [[44, 1, 2]] },
       { input: 'Romans 1:2', expectedOutput: [[44, 1, 2]] },

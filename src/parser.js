@@ -15,8 +15,9 @@ class JotaParser {
     let content = text
     const passages = []
     this.options.locales.forEach(parserRules => {
+      const { bookMatchers, order } = parserRules.default || parserRules
       // For a given locale
-      content = parseLocale(content, passages, parserRules.bookMatchers)
+      content = parseLocale(content, passages, bookMatchers, order)
       // Remove the found books so the next locale parse would not find them
       content = content.replace(new RegExp(bookMarker, 'g'), '')
 
@@ -25,12 +26,13 @@ class JotaParser {
   }
 }
 
-function parseLocale(text, passages, bookMatchers) {
+function parseLocale(text, passages, bookMatchers, order) {
   let content = text
 
   // Find books with following chapter first and change the book name abbreviation to the book index prefixed with bookMarker
   // This is necessary in order to parse "john 1,1 king 2,3" as "john 1" and "1 king 2,3"
-  for (let bookIndex = bookMatchers.length; bookIndex-- > 0;) {
+  for (let i = order.length; i-- > 0;) {
+    const bookIndex = order[i]
     const bookMatcher = bookMatchers[bookIndex]
     const bookChapterMatcher = `(${nonAlphanumeric}|^)(?<book>${bookMatcher})(?=[${delimiterWithSpace}]+\\d|\\d)`
     // console.log(bookIndex, bookChapterMatcher)
@@ -41,7 +43,9 @@ function parseLocale(text, passages, bookMatchers) {
   let lastPassage
 
   // It is important to identify the chapter delimiter so that 1M 1:2; 3:4 would yield [[0, 1, 2], [2, 3, 4]] instead of [[0, 1, 2, 4]]
-  const bookChapterMatcher = `${bookMarker}(?<book>\\d+)[:;/,. ]*(?<firstChapter>\\d+)((?<chapterDelimiterMatch>[:;/,. ]+)(?<tail>[:;/,. \\-–\\d]*))?`
+  // const bookChapterMatcher = `${bookMarker}(?<book>\\d+)[:;/,. ]*(?<firstChapter>\\d+)((?<chapterDelimiterMatch>[:;/,. ]+)(?<tail>[:;/,. \\-–\\d]*))?`
+  const bookChapterMatcher = `${bookMarker}(?<book>\\d+)[:;/,. ]*(?<firstChapter>\\d+)((?<chapterDelimiterMatch>[:;/,. ]+)(?<tail>([:;/,. \\-–]*|(\\d+[a-zA-Z]?))*))?`
+
   const bookRegExp = new RegExp(bookChapterMatcher, 'gi')
   for (let bookMatch; bookMatch = bookRegExp.exec(content);) {
     const { book, firstChapter, chapterDelimiterMatch, tail } = bookMatch.groups
@@ -49,7 +53,7 @@ function parseLocale(text, passages, bookMatchers) {
     const chapterDelimiter = chapterDelimiterMatch ? chapterDelimiterMatch.substring(0, 1) : ''
     const chapterDelimiterEscaped = chapterDelimiterMatch ? '\\' + chapterDelimiter : chapterDelimiter
 
-    const chapterFragments = firstChapter + chapterDelimiter + (tail || '')
+    const chapterFragments = firstChapter + chapterDelimiter + (tail || '').replace(/[a-zA-Z]/g, '')
     const chapterFragmentMatcher = `(?<chapter>\\d+)${spaces0}${chapterDelimiterEscaped}(?<verses>.*?((?=\\d+${chapterDelimiterEscaped}\\s*\\d)|\\n|$))?`
     const chapterFragmentRegExp = new RegExp(chapterFragmentMatcher, 'gi')
 

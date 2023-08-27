@@ -10,16 +10,9 @@ The output of parsing is an array of references, where reference can be a:
 
 Currently supported locales: `en`, `pl`. Locale bundles provide support for names of books in the given language.
 
-To add support for a new locale:
-1. Create `parser-${locale}.js` in `/src` folder
-1. Create `data-${locale}.js` and `parser.${locale}.spec.js` in `/test` folder
-1. Add locale to `supportedLocales` constance in `index.js`
-
-Contributions welcomed.
-
 ## Usage
 
-ES6"
+ES6:
 ``` javascript
 import { Parser, en } from 'jota-parser'
 const parser = new Parser({ locales: [en] })
@@ -36,6 +29,7 @@ Browser:
 ```
 
 ## Development
+
 ### Install the dependencies
 ```bash
 npm install
@@ -61,3 +55,9 @@ npm run test
 ```
 npm run deploy:gh-pages
 ```
+
+### Add support for a new locale
+
+1. Create `parser-${locale}.js` in `/src` folder
+1. Create `data-${locale}.js` and `parser.${locale}.spec.js` in `/test` folder
+1. Add locale to `supportedLocales` constance in `index.js`

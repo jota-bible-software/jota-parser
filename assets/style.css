@@ -65,7 +65,8 @@ h4 {
 }
 
 #tabs {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  margin-top: 8px
 }
 
 #tabs h3 {
@@ -94,7 +95,8 @@ h4 {
 
 .failure {
   color: #ff7b72;
-  padding-right: 8px;
+  padding-right: 9px;
+  margin-left: 1px
 }
 
 .success {
