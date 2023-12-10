@@ -42,9 +42,11 @@ function parseLocale(text, passages, bookMatchers, order) {
 
   let lastPassage
 
-  // It is important to identify the chapter delimiter so that 1M 1:2; 3:4 would yield [[0, 1, 2], [2, 3, 4]] instead of [[0, 1, 2, 4]]
+  // It is important to identify the chapter delimiter so that 1M 1:2; 3:4 would yield [[0, 1, 2], [0, 3, 4]] instead of [[0, 1, 2, 4]]
   // const bookChapterMatcher = `${bookMarker}(?<book>\\d+)[:;/,. ]*(?<firstChapter>\\d+)((?<chapterDelimiterMatch>[:;/,. ]+)(?<tail>[:;/,. \\-–\\d]*))?`
-  const bookChapterMatcher = `${bookMarker}(?<book>\\d+)[:;/,. ]*(?<firstChapter>\\d+)((?<chapterDelimiterMatch>[:;/,. ]+)(?<tail>([:;/,. \\-–]*|(\\d+[a-zA-Z]?))*))?`
+  const head = `${bookMarker}(?<book>\\d+)[:;/,. ]*(?<firstChapter>\\d+)((?<chapterDelimiterMatch>[:;/,. ]+)`
+  const tail = `(?<tail>([:;/,. ]*|(\\d+[a-zA-Z]?)|\s*[\\-–]\s*(?=[\\d${bookMarker}]))*))?`
+  const bookChapterMatcher = head + tail
 
   const bookRegExp = new RegExp(bookChapterMatcher, 'gi')
   for (let bookMatch; bookMatch = bookRegExp.exec(content);) {
@@ -76,14 +78,19 @@ function parseLocale(text, passages, bookMatchers, order) {
             }
             if (verses.match(/[-–]\s*$/)) {
               // It means there is a chapter range
-              if (!lastPassage) {
-                lastPassage = passage
-              }
+              // if (!lastPassage) {
+              lastPassage = passage
+              // }
             } else {
               if (lastPassage) {
                 passages.push([lastPassage, passage])
               } else {
-                passages.push(passage)
+                const last = passages.at(-1)
+                if (last && last[0] === passage[0] && last[1] === passage[1] && (last[2] === passage[2] - 1 || last[3] === passage[2] - 1)) {
+                  last[3] = passage[3] === undefined ? passage[2] : passage[3]
+                } else {
+                  passages.push(passage)
+                }
               }
             }
           }

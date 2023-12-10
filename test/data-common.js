@@ -1,5 +1,10 @@
 export const data = [
   {
+    group: 'Special', cases: [
+
+    ]
+  },
+  {
     group: 'Case insensitive', cases: [
       { input: 'Gen 1:2', expectedOutput: [[0, 1, 2]] },
       { input: 'gen 1:2', expectedOutput: [[0, 1, 2]] },
@@ -43,7 +48,7 @@ export const data = [
       { input: 'Gen 2 3', expectedOutput: [[0, 2, 3]] },
       { input: '1John 2:3', expectedOutput: [[61, 2, 3]] },
       { input: 'Gen 2:3a', expectedOutput: [[0, 2, 3]] },
-      { input: 'Gen 2:3:4', expectedOutput: [[0, 2, 3], [0, 2, 4]] },
+      { input: 'Gen 2:3:4', expectedOutput: [[0, 2, 3, 4]] },
       { input: 'Gen 2:3-5', expectedOutput: [[0, 2, 3, 5]] },
       { input: 'Gen 2: 3-5', expectedOutput: [[0, 2, 3, 5]] },
       { input: 'Gen 2:3,5', expectedOutput: [[0, 2, 3], [0, 2, 5]] },
@@ -61,8 +66,10 @@ export const data = [
   {
     group: 'Cross chapter ranges', cases: [
       { input: 'Gen 2:3-3:5', expectedOutput: [[[0, 2, 3], [0, 3, 5]]] },
+      { input: 'Gen 1:2-3,4-5', expectedOutput: [[0, 1, 2, 5]] },
       { input: 'Gen 1:2-3; 3:4-5', expectedOutput: [[0, 1, 2, 3], [0, 3, 4, 5]] },
       { input: 'Gen 2:3-5, 7-8', expectedOutput: [[0, 2, 3, 5], [0, 2, 7, 8]] },
+      { input: 'T #1 - Luke 4:3 - Jesus quoted Deut 8:3 T #2 - Luke 4:5-8 ', expectedOutput: [[41, 4, 3], [4, 8, 3], [41, 4, 5, 8]] }
     ]
   },
   {

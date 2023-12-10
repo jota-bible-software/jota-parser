@@ -36,7 +36,7 @@ const bookMatchers = [
   `(${book2}${moses}|(wy(j([śs](c(ia)?)?)?)?)|wj)`, // #1
   `(${book3}${moses}|kap([łl](a[ńn](sk(a|ą|iej)?)?)?)?)`, // #2
   `(${book4}${moses}|(li(czb?)?)|lb)`, // #3
-  `(${book5}${moses}|pow(t([oó]rzonego)?)?(${spaces1}prawa)?|pwt)`, // #4
+  `(${book5}${moses}|pow(t([oó]rzonego)?)?\.?(${spaces1}prawa)?|pwt)`, // #4
   `${book0}(joz(u(e(go)?)?)?|jz)`, // #5
   `${book0}(s[eę](d(z(i[oó]w)?)?)?|sdz)`, // #6
   `${book0}(rut?(hy?)?|rt)`, // #7

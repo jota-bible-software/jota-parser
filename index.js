@@ -109,9 +109,9 @@ function setupInputElement() {
     const v = e.target.value
     const output1 = output2osis(parser1.parse(v))
     parser2.parse(v)
-    const output2 = parser2.osis()
+    const output2 = addSpaces(parser2.osis())
     document.getElementById("output1").innerHTML = output1
-    document.getElementById("output2").innerHTML = addSpaces(output2)
+    document.getElementById("output2").innerHTML = output2
 
     const theSame = output1 === output2
     const element = document.getElementById('compare-output')
