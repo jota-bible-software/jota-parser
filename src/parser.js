@@ -85,9 +85,9 @@ function parseLocale(text, passages, bookMatchers, order) {
               if (lastPassage) {
                 passages.push([lastPassage, passage])
               } else {
-                const last = passages.at(-1)
+                const last = passages[passages.length - 1]
                 if (last && last[0] === passage[0] && last[1] === passage[1] && (last[2] === passage[2] - 1 || last[3] === passage[2] - 1)) {
-                  last[3] = passage[3] === undefined ? passage[2] : passage[3]
+                  last[3] = (passage[3] === undefined ? passage[2] : passage[3])
                 } else {
                   passages.push(passage)
                 }

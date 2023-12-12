@@ -37,10 +37,12 @@
     "build": "vite build --config vite.config.lib.js && vite build --config vite.config.gh-pages.js",
     "deploy:gh-pages": "gh-pages -d dist-gh-pages",
     "dev": "vite --config vite.config.gh-pages.js",
+    "publish-officially": "pnpm publish",
+    "publish-locally": "read https://medium.com/@debshish.pal/publish-a-npm-package-locally-for-testing-9a00015eb9fd",
     "preview": "vite preview --config vite.config.gh-pages.js",
     "test": "jest",
     "test:watchAll": "jest --watchAll"
   },
   "type": "module",
-  "version": "1.0.6"
+  "version": "1.0.7"
 }

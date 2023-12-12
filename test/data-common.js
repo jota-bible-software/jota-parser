@@ -48,6 +48,7 @@ export const data = [
       { input: 'Gen 2 3', expectedOutput: [[0, 2, 3]] },
       { input: '1John 2:3', expectedOutput: [[61, 2, 3]] },
       { input: 'Gen 2:3a', expectedOutput: [[0, 2, 3]] },
+      { input: 'Gen 2:3,4', expectedOutput: [[0, 2, 3, 4]] },
       { input: 'Gen 2:3:4', expectedOutput: [[0, 2, 3, 4]] },
       { input: 'Gen 2:3-5', expectedOutput: [[0, 2, 3, 5]] },
       { input: 'Gen 2: 3-5', expectedOutput: [[0, 2, 3, 5]] },
