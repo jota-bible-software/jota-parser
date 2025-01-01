@@ -34,7 +34,7 @@ const order = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
 const bookMatchers = [
   `(${book1}${moses}|(rodz(aju?)?)|rdz)`, // #0
   `(${book2}${moses}|(wy(j([śs](c(ia)?)?)?)?)|wj)`, // #1
-  `(${book3}${moses}|kap([łl](a[ńn](sk(a|ą|iej)?)?)?)?)`, // #2
+  `(${book3}${moses}|(kap([łl](a[ńn](sk(a|ą|iej)?)?)?)?)|kp[lł])`, // #2
   `(${book4}${moses}|(li(czb?)?)|lb)`, // #3
   `(${book5}${moses}|pow(t([oó]rzonego)?)?\.?(${spaces1}prawa)?|pwt)`, // #4
   `${book0}(joz(u(e(go)?)?)?|jz)`, // #5
@@ -76,11 +76,11 @@ const bookMatchers = [
   `${gospelWord}([łl]u(k(asza?)?)?|[łl]k)`, // #41
   `${gospelWord}${john}`, // #42
   `${book0}dz(iej(e|ach))?\\.?${spaces0}(ap(o(s(t(olski(e|ch))?)?)?)?)?`, // #43
-  `${letter0}rz(y(m(ian)?)?)?`, // #44
+  `${letter0}rz(y(m(ian)?)?)?|rzm`, // #44
   `${letter1}${corinthians}`, // #45
   `${letter2}${corinthians}`, // #46
-  `${letter0}ga(l(a(t[óo]w|cjan)?)?)?`, // #47
-  `${letter0}ef(e(z(jan|[oó]w)?)?)?`, // #48
+  `${letter0}ga(l(a(t[óo]w|cjan)?)?)?|glt?`, // #47
+  `${letter0}ef(e(z(jan|[oó]w)?)?)?|efz`, // #48
   `${letter0}(fili(p(ian|ens[oó]w)?)?|flp?)`, // #49
   `${letter0}kol(o(s(an|ens[oó]w)?)?)?`, // #50
   `${letter1}${thessalonians}`, // #51

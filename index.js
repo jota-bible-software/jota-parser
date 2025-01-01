@@ -1,10 +1,10 @@
 import JotaParser from './src/parser'
 
-const supportedLocales = ['en', 'pl']
+const supportedLocales = ['en-US', 'pl-PL', 'pt-BR']
 
 // Set default locale and the change handler
 let defaultLocale = navigator.languages[0].substring(0, 2)
-if (!supportedLocales.includes(defaultLocale)) defaultLocale = 'en'
+if (!supportedLocales.includes(defaultLocale)) defaultLocale = 'en-US'
 
 let parser1 // Jota parser recreated on locale change
 const parser2 = new bcv_parser()
@@ -16,7 +16,7 @@ async function displayTestCases(locale, common) {
   let parserRules, data
   if (common) {
     /* @vite-ignore */
-    parserRules = await import(`./src/parser-en`)
+    parserRules = await import(`./src/parser-en-US`)
     /* @vite-ignore */
     data = (await import(`./test/data-common`)).data
   } else {

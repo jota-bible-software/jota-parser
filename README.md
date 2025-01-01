@@ -1,6 +1,6 @@
 Jota Parser finds references to Bible passages in the given text. 
 
-For example it will understand that "Read J 3 16" refers to the Gospel of John chapter 3 verse 16. Lots of examples of what it can parse are displayed [here](https://jota-bible-software.github.io/jota-parser/index.html?common=true).
+For example it will understand that "Read J 3 16" refers to the Gospel of John chapter 3 verse 16. Lots of examples of what it can parse are presented [here](https://jota-bible-software.github.io/jota-parser/index.html?common=true).
 
 The output of parsing is an array of references, where reference can be a:
 1. Single chapter: `[bookIndex, chapter]` 
@@ -8,22 +8,22 @@ The output of parsing is an array of references, where reference can be a:
 1. Range of verses in a single chapter: `[bookIndex, chapter, startVerse, endVerse]` 
 1. Chapter crossing range of verses: `[[bookIndex1, chapter1, verse1?], [bookIndex2, chapter2, verse2?]]`
 
-Currently supported locales: `en`, `pl`. Locale bundles provide support for names of books in the given language.
+Currently supported locales: `en-US`, `pl-PT`, `pt-BR`. Locale bundles provide support for parsing names of books in the given language.
 
 ## Usage
 
 ES6:
 ``` javascript
-import { Parser, en } from 'jota-parser'
-const parser = new Parser({ locales: [en] })
+import { Parser, enUS } from 'jota-parser'
+const parser = new Parser({ locales: [enUS] })
 console.log(parser.parse('J 3 16'))
 ```
 
 Browser:
 ``` html
 <script type="module">
-  import { Parser, en } from "https://unpkg.com/jota-parser?module"
-  const parser = new Parser({locales: [en]})
+  import { Parser, enUS } from "https://unpkg.com/jota-parser?module"
+  const parser = new Parser({locales: [enUS]})
   console.log(parser.parse('Read J 3:16'))
 </script>
 ```

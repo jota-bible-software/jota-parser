@@ -1,6 +1,7 @@
 const spaces0 = '\\s*'
 const delimiterWithSpace = ':;/,. '
-const nonAlphanumeric = '[^0-9A-Za-zZąćęłńóśźżĄĘŁŃÓŚŹŻ]'
+// const nonAlphanumeric = '[^0-9A-Za-zZąćęłńóśźżĄĘŁŃÓŚŹŻ]'
+const nonAlphanumeric = '[^\dA-Za-zªµºÀ-ÖØ-öø-ɏḀ-ỿⱠ-ⱿꜢ-ꞈꞋ-ꞎꞐ-ꞓꞠ-Ɦꟸ-ꟿ]'
 const bookMarker = '\uF000'
 
 class JotaParser {
