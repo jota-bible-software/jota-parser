@@ -16,9 +16,9 @@ async function displayTestCases(locale, common) {
   let parserRules, data
   if (common) {
     /* @vite-ignore */
-    parserRules = await import(`./src/parser-en-US`)
+    parserRules = await import(`./src/parser-en-US.js`)
     /* @vite-ignore */
-    data = (await import(`./test/data-common`)).data
+    data = (await import(`./test/data-common.js`)).data
   } else {
     /* @vite-ignore */
     parserRules = await import(`./src/parser-${locale}.js`)
@@ -72,15 +72,15 @@ async function displayTestCases(locale, common) {
   const gridElement = document.getElementById('grid')
   if (!commonHTML) commonHTML = gridElement.innerHTML
   gridElement.innerHTML = commonHTML + testCases
-  document.getElementById('stat1').innerHTML += `${outcomeIcon(!stat1)} ${statMessage(stat1, 1)}`
-  document.getElementById('stat2').innerHTML += `${outcomeIcon(!stat2)} ${statMessage(stat2, 2)}`
+  document.getElementById('stat1').innerHTML = `${outcomeIcon(!stat1)} ${statMessage(stat1, 1)}`
+  document.getElementById('stat2').innerHTML = `${outcomeIcon(!stat2)} ${statMessage(stat2, 2)}`
 
   const optionToSelect = document.querySelector(`#locale option[value="${locale}"]`)
   optionToSelect.selected = true
 
   const selectElement = document.querySelector('#locale select')
   selectElement.addEventListener('change', () => {
-    displayTestCases(selectElement.value)
+    displayTestCases(selectElement.value, common)
   })
 
   const tabBooks = document.querySelector('#tabs h3:nth-child(1)')
@@ -93,15 +93,15 @@ async function displayTestCases(locale, common) {
     tabcommon.classList.remove('selected')
   }
   tabBooks.addEventListener('click', () => {
-    window.location.href = 'index.html'
+    window.location.href = '?common=false'
   })
   tabcommon.addEventListener('click', () => {
-    window.location.href = '?common=true'
+    window.location.href = 'index.html'
   })
   setupInputElement()
 }
 
-const common = !!window.location.search.includes('common=true')
+const common = window.location.search.includes('common=false') ? false : true
 displayTestCases(defaultLocale, common)
 
 function setupInputElement() {
