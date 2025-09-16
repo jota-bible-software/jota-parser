@@ -1,52 +1,62 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <title>Jota Parser Show Case</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/bible-passage-reference-parser/js/pl_bcv_parser.min.js"></script>
-    
-    <script type="module" crossorigin src="/jota-parser/assets/index-0a5fcb5c.js"></script>
-    <link rel="stylesheet" href="/jota-parser/assets/index-ec793f2a.css">
-  </head>
-  <body>
-    <div id="app">
-      <h1>Jota Parser Show Case</h1>
-  
-      <div id="grid" class="card grid-container">
-        
-        <div id="locale" class="span">
-          <span>Select locale</span>
-          <select>
-            <option value="en-US">en-US</option>
-            <option value="pl-PL">pl-PL</option>
-            <option value="pt-BR">pt-BR</option>
-          </select>
-        </div>
-        
-        <div class="header"> Input </div>
-        <div class="header jota"> Jota Parser Output </div>
-        <div class="header bcv"> BCV Parser Output </div>
-        
-        <div class="span"> <h2>Test your input</h2></div>
-        <div> <input id="text-input"/> </div>
-        <div id="output1" class="jota"></div>
-        <div id="output2" class="bcv"></div>
-  
-        <div></div>
-        <div id="compare-output"></div>
-  
-        <div class="span"></div>
 
-        <div><h2>Saved Test Cases </h2></div>
-        <div id="stat1" class="stat"></div>
-        <div id="stat2" class="stat"></div>
-
-        <div id="tabs" class="span"><h3 class="selected">Book Names</h3><h3>Common Rules</h3></div>
+<head>
+  <title>Jota Parser Show Case</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/bible-passage-reference-parser/js/pl_bcv_parser.min.js"></script>
   
+  <script type="module" crossorigin src="/jota-parser/assets/index-c90afa51.js"></script>
+  <link rel="stylesheet" href="/jota-parser/assets/index-ec793f2a.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>Jota Parser Show Case</h1>
+
+    <div id="grid" class="card grid-container">
+
+      <div id="locale" class="span">
+        <span>Select locale</span>
+        <select>
+          <option value="en-US">en-US</option>
+          <option value="pl-PL">pl-PL</option>
+          <option value="pt-BR">pt-BR</option>
+        </select>
       </div>
+
+      <div class="header"> Input </div>
+      <div class="header jota"> Jota Parser Output </div>
+      <div class="header bcv"> BCV Parser Output </div>
+
+      <div class="span">
+        <h2>Test your input</h2>
+      </div>
+      <div> <input id="text-input" /> </div>
+      <div id="output1" class="jota"></div>
+      <div id="output2" class="bcv"></div>
+
+      <div></div>
+      <div id="compare-output"></div>
+
+      <div class="span"></div>
+
+      <div>
+        <h2>Saved Test Cases </h2>
+      </div>
+      <div id="stat1" class="stat"></div>
+      <div id="stat2" class="stat"></div>
+
+      <div id="tabs" class="span">
+        <h3>Book Names</h3>
+        <h3 class="selected">Common Rules</h3>
+      </div>
+
     </div>
+  </div>
+
   
-    
-  </body>
+</body>
+
 </html>
